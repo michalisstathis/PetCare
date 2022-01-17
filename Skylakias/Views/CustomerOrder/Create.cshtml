@@ -1,0 +1,61 @@
+﻿@model Skylakias.ViewModels.CreateOrdersViewModel
+
+
+@{
+    ViewBag.Title = "New Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Order</h2>
+<table class="table">
+    @foreach (var item in Model.Services)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }
+</table>
+
+
+@using (Html.BeginForm("Create", "Orders", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <form>
+        <div class="form-group">
+            <label>Service</label>
+            @Html.DropDownListFor(model => Model.ServiceId, new SelectList(Model.Services, "Id", "Name"), "-------", new { @class = "form-control dropdownlist" })
+        </div>
+
+       
+
+        <button class="btn btn-primary">Add Order</button>
+    </form>
+
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        let lista = $('.dropdownlist').val();
+        console.log(lista);
+
+
+
+
+
+
+    </script>
+
+}

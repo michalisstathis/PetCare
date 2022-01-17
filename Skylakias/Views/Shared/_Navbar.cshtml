@@ -1,0 +1,31 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://localhost:44399/"><img src="~/Content/images/logo.png" class="navbar-brand" /></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+                @{ if (User.IsInRole("Admin") | User.IsInRole("Staff"))
+                    {
+        <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+
+                        <li>@Html.ActionLink("Orders", "Index", "Orders")</li> }
+                                    else
+                                    {
+                        <li> @Html.ActionLink("My Orders", "Index", "CustomerOrder")   </li>
+                                        <li> @Html.ActionLink("Make an Order", "Create", "CustomerOrder")   </li> } }
+
+                <li>@Html.ActionLink("Services", "Index", "Services")</li>
+
+
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
