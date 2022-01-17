@@ -320,6 +320,7 @@
     <Content Include="Views\Services\ReadOnlyList.cshtml" />
     <Content Include="Views\CustomerOrder\Index.cshtml" />
     <Content Include="Views\CustomerOrder\Create.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
